@@ -81,7 +81,7 @@ class TestCortado extends FlatSpec {
       numbers) @@@ "\n")
 
 
-    println( "["###(("{n:"+++(1000|||(numbers+++2)) *** List(1, 3, 5)+++"}")@@@",")###"]")
+    println( "["###  "{n:"+++(1000|||(numbers+++2)) *** List(1, 3, 5)+++ "}" @@@"," ###"]")
 
   }
 }

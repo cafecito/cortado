@@ -109,3 +109,7 @@ https://www.fb.net/id/6
 http://dev.fb.net/id/6
 https://dev.fb.net/id/6
 ```
+Now, supposed we want to just generate addresses with https and leave out http. Simple stuff, just remove the list and put a string instead.
+```scala
+(http"+++"://"+++List("www","dev")+++"."+++List("google", "fb")+++"."+++List("com", "net")+++"/id/"+++ numbers)@@@"\n
+````
