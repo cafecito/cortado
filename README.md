@@ -29,7 +29,7 @@ val numbers = List(1,40,6)
 ```
 Evaluates to 
 
-```numbers: List[Int] = List(1, 40, 6)```
+```numbers: List[Int] = List(333, 23, 125)```
 
 Now we multiply this list by 1, 3 and 5 on this list and we expect all possible results
 
