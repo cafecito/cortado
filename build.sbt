@@ -1,7 +1,9 @@
-name := "cortage"
+name := "cortado"
 
 
-version := "1.0"
+version := "1.0A"
+
+organization := "com.cafecito"
 
 scalaVersion := "2.12.3"
 
@@ -11,14 +13,14 @@ libraryDependencies += "org.scalatest" % "scalatest_2.12" % "3.0.4" % "test"
 
 
 // POM settings for Sonatype
-homepage := Some(url("https://github.com/username/projectname"))
+homepage := Some(url("https://github.com/cafecito/cortado"))
 
-scmInfo := Some(ScmInfo(url("https://github.com/username/projectname"),  "git@github.com:username/projectname.git"))
-developers += Developer("username",
-  "User Name",
-  "mail@username.de",
-  url("https://github.com/username"))
+scmInfo := Some(ScmInfo(url("https://github.com/cafecito/cortado"),  "git@github.com:cafecito/cortado.git"))
+developers += Developer("hernansaab",
+  "Hernan Saab",
+  "hernan_javier_saab@yahoo.com",
+  url("https://github.com/hernansaab"))
 
-licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
+licenses += ("MIT", url("https://github.com/cafecito/cortado/blob/master/LICENSE"))
 
 pomIncludeRepository := (_ => false)
