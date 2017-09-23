@@ -257,7 +257,7 @@ object Cortado {
       ll *** rl
     }
 
-    def ***[E](rl: Seq[_]): Seq[_] = {
+    def ***(rl: Seq[_]): Seq[_] = {
       rl.flatMap(r => ll.map(
         l => multiply(l, r)
       ))
@@ -320,6 +320,7 @@ object Cortado {
     }
 
     def @@@(rla: String): String = {
+      println("argument>>"+rla+"made"+ll.mkString("ddd"))
         ll.mkString(rla)
     }
 

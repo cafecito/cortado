@@ -65,9 +65,23 @@ class TestCortado extends FlatSpec {
     val operationTimes3 = operation *** 3
     println(operationTimes3)
 
-    val bracketed = "["+++operationTimes3+++"]"
+    val bracketed = operationTimes3@@@"]"
+    val numbers = List(1,40,6)
+    1000|||(numbers+++2)
 
-    println(bracketed)
+    1000|||(numbers+++2) *** List(1, 3, 5)
+
+
+
+
+    println((List("http", "https") +++ "://" +++
+      List("www","dev")+++ "." +++
+      List("google", "fb") +++ "." +++
+      List("com", "net") +++ "/id/"+++
+      numbers) @@@ "\n")
+
+
+    println( "["###(("{n:"+++(1000|||(numbers+++2)) *** List(1, 3, 5)+++"}")@@@",")###"]")
 
   }
 }
