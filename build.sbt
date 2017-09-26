@@ -1,9 +1,9 @@
 name := "cortado"
 
 
-version := "1.0A"
+version := "1.0AB.SNAPSHOT"
 
-organization := "com.cafecito"
+organization := "com.mikafecito"
 
 scalaVersion := "2.12.3"
 
@@ -24,3 +24,22 @@ developers += Developer("hernansaab",
 licenses += ("MIT", url("https://github.com/cafecito/cortado/blob/master/LICENSE"))
 
 pomIncludeRepository := (_ => false)
+
+publishArtifact in Test := false
+
+publishMavenStyle := true
+
+
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+}
+
+
+//addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
+
+
+//pgpSecretRing := file("/c/Users/the big one/.sbt/gpg/secring.asc")
