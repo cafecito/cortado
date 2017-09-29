@@ -60,10 +60,8 @@ class TestCortado extends FlatSpec {
     val operation = (100 ||| List(5.0,25.0,40.0))*** 2
 
 
-    println("["###operation###"]")
 
     val operationTimes3 = operation *** 3
-    println(operationTimes3)
 
     val bracketed = operationTimes3@@@"]"
     val numbers = List(1,40,6)
