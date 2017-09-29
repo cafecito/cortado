@@ -320,7 +320,6 @@ object Cortado {
     }
 
     def @@@(rla: String): String = {
-      println("argument>>"+rla+"made"+ll.mkString("ddd"))
         ll.mkString(rla)
     }
 
