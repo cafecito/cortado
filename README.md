@@ -48,11 +48,11 @@ res1: Seq[Any] = List(333, 23, 125, 111, 7, 41, 66, 4, 25)
 ```
 We can wrap the expression above into a curly braced, comma separated integers and wrap the whole result into squared brackets in a single expression
 ```scala
-"["###(("{n:"+++(1000|||(numbers+++2)) *** List(1, 3, 5)+++"}")@@@",")###"]"
+"["###(("{n:"+++((1000|||(numbers+++2) *** List(1, 3, 5)))+++"}")@@@",")###"]"
 ```
 Evaluates to
 ```scala
-res2: String =[{n:333},{n:23},{n:125},{n:999},{n:69},{n:375},{n:1665},{n:115},{n:625}]
+res2: String = [{n:333},{n:23},{n:125},{n:111},{n:7},{n:41},{n:66},{n:4},{n:25}]
 ```
 
 ### Performing String Operations On List
