@@ -1,7 +1,7 @@
 name := "cortado"
 
 
-version := "1.0AB.SNAPSHOT"
+version := "1.0AB"
 
 organization := "com.mikafecito"
 
@@ -30,16 +30,15 @@ publishArtifact in Test := false
 publishMavenStyle := true
 
 
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
+publishTo := Some(
   if (isSnapshot.value)
-    Some("snapshots" at nexus + "content/repositories/snapshots")
+    Opts.resolver.sonatypeSnapshots
   else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
+    Opts.resolver.sonatypeStaging
+)
 
 
 //addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
 
 
-//pgpSecretRing := file("/c/Users/the big one/.sbt/gpg/secring.asc")
+pgpSecretRing := file("c:/Users/the big one/.sbt/gpg/secring.asc")

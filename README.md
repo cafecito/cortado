@@ -1,6 +1,10 @@
 # cortado
 Enhanced operators for list of strings and numerics
 
+### sbt import
+```
+libraryDependencies += "com.mikafecito" % "cortado_2.12" % "1.0AB"
+```
 
 ### Suported Operators
 
