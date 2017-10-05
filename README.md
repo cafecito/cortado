@@ -19,6 +19,8 @@ libraryDependencies += "com.mikafecito" % "cortado_2.12" % "2.0AB"
 
 #> implode list to string (mkString)
 
+## concatenate 
+
 
 ```
 
