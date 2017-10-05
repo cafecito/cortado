@@ -1,7 +1,7 @@
 name := "cortado"
 
 
-version := "1.0AB"
+version := "2.0AB"
 
 organization := "com.mikafecito"
 

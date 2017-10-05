@@ -17,9 +17,9 @@ libraryDependencies += "com.mikafecito" % "cortado_2.12" % "1.0AB"
 
 #/ divide
 
-#@ implode list to string
+#> implode list to string (mkString)
 
-## concatenate imploded list
+
 ```
 
 ### Performing Basic Arithmetic Operators
@@ -48,11 +48,12 @@ res1: Seq[Any] = List(333, 23, 125, 111, 7, 41, 66, 4, 25)
 ```
 We can wrap the expression above into a curly braced, comma separated integers and wrap the whole result into squared brackets in a single expression
 ```scala
-"["##(("{n:"#+((1000#/(numbers#+2)#*List(1, 3, 5)))#+"}")#@",")##"]"
+"["+ "{n:" ## numbers ## "}" #> ","+"]"
 ```
 Evaluates to
 ```scala
-res2: String = [{n:333},{n:23},{n:125},{n:111},{n:7},{n:41},{n:66},{n:4},{n:25}]
+res2: String = [{n:1},{n:40},{n:6}]
+
 ```
 
 ### Performing String Operations On List
@@ -60,60 +61,61 @@ The last example is a segway to show what you can do with string operations.
 As an example, we can generate a list of different addresses using string operations on a list of numbers if you will. Let's compose a few fictitious links:
 
 ```scala
-(List("http", "https")#+"://"#+List("www","dev")#+"."#+List("google", "fb")#+"."#+List("com", "net")#+"/id/"#+numbers)#@"\n"
+List("http", "https")##"://"##List("www","dev")##"."##List("google", "fb")##"."##List("com", "net")##"/id/"##numbers#>"\n"
 ```
 Evaluates to
 ```scala
 res2: String = http://www.google.com/id/1
-https://www.google.com/id/1
-http://dev.google.com/id/1
-https://dev.google.com/id/1
-http://www.fb.com/id/1
-https://www.fb.com/id/1
-http://dev.fb.com/id/1
-https://dev.fb.com/id/1
-http://www.google.net/id/1
-https://www.google.net/id/1
-http://dev.google.net/id/1
-https://dev.google.net/id/1
-http://www.fb.net/id/1
-https://www.fb.net/id/1
-http://dev.fb.net/id/1
-https://dev.fb.net/id/1
-http://www.google.com/id/40
-https://www.google.com/id/40
-http://dev.google.com/id/40
-https://dev.google.com/id/40
-http://www.fb.com/id/40
-https://www.fb.com/id/40
-http://dev.fb.com/id/40
-https://dev.fb.com/id/40
-http://www.google.net/id/40
-https://www.google.net/id/40
-http://dev.google.net/id/40
-https://dev.google.net/id/40
-http://www.fb.net/id/40
-https://www.fb.net/id/40
-http://dev.fb.net/id/40
-https://dev.fb.net/id/40
-http://www.google.com/id/6
-https://www.google.com/id/6
-http://dev.google.com/id/6
-https://dev.google.com/id/6
-http://www.fb.com/id/6
-https://www.fb.com/id/6
-http://dev.fb.com/id/6
-https://dev.fb.com/id/6
-http://www.google.net/id/6
-https://www.google.net/id/6
-http://dev.google.net/id/6
-https://dev.google.net/id/6
-http://www.fb.net/id/6
-https://www.fb.net/id/6
-http://dev.fb.net/id/6
-https://dev.fb.net/id/6
+               https://www.google.com/id/1
+               http://dev.google.com/id/1
+               https://dev.google.com/id/1
+               http://www.fb.com/id/1
+               https://www.fb.com/id/1
+               http://dev.fb.com/id/1
+               https://dev.fb.com/id/1
+               http://www.google.net/id/1
+               https://www.google.net/id/1
+               http://dev.google.net/id/1
+               https://dev.google.net/id/1
+               http://www.fb.net/id/1
+               https://www.fb.net/id/1
+               http://dev.fb.net/id/1
+               https://dev.fb.net/id/1
+               http://www.google.com/id/40
+               https://www.google.com/id/40
+               http://dev.google.com/id/40
+               https://dev.google.com/id/40
+               http://www.fb.com/id/40
+               https://www.fb.com/id/40
+               http://dev.fb.com/id/40
+               https://dev.fb.com/id/40
+               http://www.google.net/id/40
+               https://www.google.net/id/40
+               http://dev.google.net/id/40
+               https://dev.google.net/id/40
+               http://www.fb.net/id/40
+               https://www.fb.net/id/40
+               http://dev.fb.net/id/40
+               https://dev.fb.net/id/40
+               http://www.google.com/id/6
+               https://www.google.com/id/6
+               http://dev.google.com/id/6
+               https://dev.google.com/id/6
+               http://www.fb.com/id/6
+               https://www.fb.com/id/6
+               http://dev.fb.com/id/6
+               https://dev.fb.com/id/6
+               http://www.google.net/id/6
+               https://www.google.net/id/6
+               http://dev.google.net/id/6
+               https://dev.google.net/id/6
+               http://www.fb.net/id/6
+               https://www.fb.net/id/6
+               http://dev.fb.net/id/6
+               https://dev.fb.net/id/6
+
 ```
 Now, supposed we want to just generate addresses with https and leave out http. Simple stuff, just remove the list and put a string instead.
 ```scala
-("http://"#+"://"#+List("www","dev")#+"."#+List("google", "fb")#+"."#+List("com", "net")#+"/id/"#+numbers)#@"\n"
+"http://" ## "://" ## List("www","dev") ##"." ## List("google", "fb") ##"." ## List("com", "net") ## "/id/" ## numbers) #> "\n"
 ````

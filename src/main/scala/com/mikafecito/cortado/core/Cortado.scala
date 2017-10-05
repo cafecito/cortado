@@ -39,10 +39,21 @@ object Cortado {
     l / r
   }
 
+  implicit class ExtendedListString(val ll: Seq[_]) {
+    def ##(rl: Seq[_]): Seq[String] = {
+      rl.flatMap(r => ll.map(l => l.toString + r.toString))
+    }
+    def ##(rl: Any): Seq[String] = {
+      ll.map(l => l.toString + rl.toString)
+    }
 
+    def #>(rla: String): String = {
+      ll.mkString(rla)
+    }
+  }
 
   implicit class ExtendedList(val ll: Seq[_]) {
-    def #+(rl: Seq[_]): Seq[_] = {
+    def #+[N:Numeric](rl: Seq[N]): Seq[N] = {
       rl.flatMap(r => ll.map(
         l => {
           r match {
@@ -103,17 +114,13 @@ object Cortado {
             case e => throw new Error("wrong right side type: "+e)
           }
         }
-      ))
+      )).map(_.asInstanceOf[N])
     }
 
     def #+[N:Numeric](rl: N): Seq[_] = {
       ll #+ List(rl)
     }
 
-    def #+(_rl: String): Seq[_] = {
-      val rl = List(_rl)
-      ll #+ rl
-    }
 
     def #-[N:Numeric](_rl: N): Seq[_] = {
       val rl = List(_rl)
@@ -282,20 +289,16 @@ object Cortado {
       val rl = List(_rl)
       ll #/ rl
     }
-    def ##[N:Numeric](_rl: N): String = {
-      ll.mkString("")+_rl
-    }
 
-    def #@(rla: String): String = {
-        ll.mkString(rla)
-    }
   }
 
 
   implicit class ExtendedNumeric[N:Numeric](val ll: N) {
-    def #+(rla: Seq[_]): Seq[_] = {
+
+    def #+(rla: Seq[N]): Seq[N] = {
       List(ll) #+ rla
     }
+
     def #+(rla: N): Seq[_] = {
       List(ll) #+ List(rla)
     }
@@ -332,25 +335,23 @@ object Cortado {
 
 
   implicit class ExtendedString(val ll: String) {
-    def #+(rla: Seq[_]): Seq[_] = {
-      List(ll) #+ rla
-    }
+    //def #+(rla: Seq[String]): Seq[String] = {
+    //  List(ll) #+ rla
+    // }
 
-    def #+[N:Numeric](rla: N): Seq[_] = {
+    def ##[N:Numeric](rla: N): Seq[_] = {
       List(ll) #+ List(rla)
     }
-    def #+(rla: String): Seq[_] = {
-      List(ll) #+ List(rla)
+    def ##(rla: String): Seq[String] = {
+      List(ll) ## List(rla)
     }
 
-    def ##(rla: Seq[_]): String = {
-      plus(ll.toString, rla.mkString("")).toString
+    def ##(rla: Seq[_]): Seq[String] = {
+      rla.map(ll + _.toString)
     }
-
-    def ##[N:Numeric](rla: N): String = {
-      plus(ll, rla.toString).toString
+    def #>(rla: String): String = {
+      ll
     }
-
   }
 
 

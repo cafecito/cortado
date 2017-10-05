@@ -9,16 +9,22 @@ class TestCortado extends FlatSpec {
 
     val web: Seq[Int] = List(2,4,5)
 
-    val ddd = "http://"#+(List(2,3)#* List(3,45,5))#+".com";
+    val ddd = "http://"##(List(2,3)#* List(3,45,5))##".com";
     var domains = List("google", "amazon")
     var spaces = List("com", "org")
     var schemes = List("http", "https")
-    var identifiers = 100 #/ (List(1,33) #+ 3) #* List(3,5)
+    val x = (List(1,33) #+ 3)
+    //#+ List(3,5)
+    val numbers = List(1,40,6)
 
+    (1000#/(numbers#+2)#*List(1, 3, 5))
+    println((List("http", "https")##"://"##List("www","dev")##"."##List("google", "fb")##"."##List("com", "net")##"/id/"##numbers)#>"\n")
+    println()
+    println(List("http", "https")##"://"##List("www","dev")##"."##List("google", "fb")##"."##List("com", "net")##"/id/"##numbers#>"\n")
+    println()
+    println("http://" ## "://" ## List("www","dev") ##"." ## List("google", "fb") ##"." ## List("com", "net") ## "/id/" ## numbers #> "\n")
 
-
-    val addresses = "["#+schemes #+ "://www."#+domains#+"."#+spaces#+"/id/"#+web#+"]"
-
+    val addresses = "["## schemes ## "://www." ## domains ## "." ##spaces##"/id/"##web##"]"
     assert(addresses == List(
       "[http://www.google.com/id/2]",
       "[https://www.google.com/id/2]",
@@ -49,22 +55,23 @@ class TestCortado extends FlatSpec {
   }
   "numeric operations" should "be cool" in {
 
-    val operation = (100 #/ List(5.0,25.0,40.0))#* 2
+    val operation = 100 #/ List(5.0,25.0,40.0)
 
 
+    //operation.foreach(println)
 
     val operationTimes3 = operation #* 3
 
-    val bracketed = operationTimes3#@"]"
+    //val bracketed = operationTimes3#@"]"
     val numbers = List(1,40,6)
-    1000#/(numbers#+2)
-
-    1000#/(numbers#+2) #* List(1, 3, 5)
 
 
 
+    assert(1000#/(numbers#+2) #* List(1, 3, 5) == List(333,23,125,999,69,375,1665,115,625))
 
-  //  println( "["###  "{n:"+++(1000|||(numbers+++2)) *** List(1, 3, 5)+++ "}" @@@"," ###"]")
+
+
+    //println( "["##  "{n:" ## ((1000#/(numbers#+2)) #* List(1, 3, 5)) ## "}" #> "," ##"]")
 
   }
 }
