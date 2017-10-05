@@ -9,7 +9,7 @@ libraryDependencies += "com.mikafecito" % "cortado_2.12" % "2.0AB"
 ### Suported Operators
 
 ```
-#+ add or concatenate`
+#+ add 
 
 #* multiply
 
