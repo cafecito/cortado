@@ -1,400 +1,353 @@
 package com.mikafecito.cortado.core
+import Numeric.Implicits._
+import Fractional.Implicits._
+import Integral.Implicits._
 
 object Cortado {
 
 
-  private  def plus(l: Any, r: Any): Any = {
-    l match {
-      case ld: Double => {
-        r match {
-          case rd: Double => ld + rd
-          case rl: Long => ld + rl
-          case rf: Float => ld + rf
-          case ri: Int => ld + ri
-          case rs: String => ld + rs
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Long => {
-        r match {
-          case rd: Double => ld + rd
-          case rl: Long => ld + rl
-          case rf: Float => ld + rf
-          case ri: Int => ld + ri
-          case rs: String => ld + rs
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Float => {
-        r match {
-          case rd: Double => ld + rd
-          case rl: Long => ld + rl
-          case rf: Float => ld + rf
-          case ri: Int => ld + ri
-          case rs: String => ld + rs
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Int => {
-        r match {
-          case rd: Double => ld + rd
-          case rl: Long => ld + rl
-          case rf: Float => ld + rf
-          case ri: Int => ld + ri
-          case rs: String => ld + rs
-          case e => throw new MatchError("Unsupported type for right side:" + e)
-        }
-      }
-      case ld: String => {
-        r match {
-          case rd: Double => ld + rd
-          case rl: Long => ld + rl
-          case rf: Float => ld + rf
-          case ri: Int => ld + ri
-          case rs: String => ld + rs
-          case e => throw new MatchError("Unsupported type for right side:" + e)
-        }
-      }
-
-      case e => throw new MatchError("Unsupported type for left side:" + e)
-    }
+  private  def plus[N:Numeric](l: N, r: N): N = {
+    l + r
   }
 
-  private  def minus(l: Any, r: Any): Any = {
-    l match {
-      case ld: Double => {
-        r match {
-          case rd: Double => ld - rd
-          case rl: Long => ld - rl
-          case rf: Float => ld - rf
-          case ri: Int => ld - ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Long => {
-        r match {
-          case rd: Double => ld - rd
-          case rl: Long => ld - rl
-          case rf: Float => ld - rf
-          case ri: Int => ld - ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Float => {
-        r match {
-          case rd: Double => ld - rd
-          case rl: Long => ld - rl
-          case rf: Float => ld - rf
-          case ri: Int => ld - ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Int => {
-        r match {
-          case rd: Double => ld - rd
-          case rl: Long => ld - rl
-          case rf: Float => ld - rf
-          case ri: Int => ld - ri
-          case e => throw new MatchError("Unsupported type for right side:" + e)
-        }
-      }
-      case e => throw new MatchError("Unsupported type for left side:" + e)
-    }
+  private  def plus[N:Numeric](l: String, r: N): String = {
+    l + r
+  }
+
+  private  def plus[N:Numeric](l: N, r: String): String = {
+    l + r
+  }
+
+  private  def plus(l: String, r: String): String = {
+    l + r
+  }
+  private  def minus[N:Numeric](l: N, r: N): N = {
+    l - r
   }
 
 
-  private  def multiply(l: Any, r: Any): Any = {
-    l match {
-      case ld: Double => {
-        r match {
-          case rd: Double => ld * rd
-          case rl: Long => ld * rl
-          case rf: Float => ld * rf
-          case ri: Int => ld * ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Long => {
-        r match {
-          case rd: Double => ld * rd
-          case rl: Long => ld * rl
-          case rf: Float => ld * rf
-          case ri: Int => ld * ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Float => {
-        r match {
-          case rd: Double => ld * rd
-          case rl: Long => ld * rl
-          case rf: Float => ld * rf
-          case ri: Int => ld * ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Int => {
-        r match {
-          case rd: Double => ld * rd
-          case rl: Long => ld * rl
-          case rf: Float => ld * rf
-          case ri: Int => ld * ri
-          case e => throw new MatchError("Unsupported type for right side:" + e)
-        }
-      }
-      case e => throw new MatchError("Unsupported type for left side:" + e)
-    }
+  private  def multiply[N:Numeric](l: N, r: N): N = {
+    l * r
   }
 
-  private  def divide(l: Any, r: Any): Any = {
-    l match {
-      case ld: Double => {
-        r match {
-          case rd: Double => ld / rd
-          case rl: Long => ld / rl
-          case rf: Float => ld / rf
-          case ri: Int => ld / ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Long => {
-        r match {
-          case rd: Double => ld / rd
-          case rl: Long => ld / rl
-          case rf: Float => ld / rf
-          case ri: Int => ld / ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Float => {
-        r match {
-          case rd: Double => ld / rd
-          case rl: Long => ld / rl
-          case rf: Float => ld / rf
-          case ri: Int => ld / ri
-          case e => throw new MatchError("Unsupported type:" + e)
-        }
-      }
-      case ld: Int => {
-        r match {
-          case rd: Double => ld / rd
-          case rl: Long => ld / rl
-          case rf: Float => ld / rf
-          case ri: Int => ld / ri
-          case e => throw new MatchError("Unsupported type for right side:" + e)
-        }
-      }
-      case e => throw new MatchError("Unsupported type for left side:" + e)
-    }
+
+  private  def divide[N:Fractional](l: N, r: N): N = {
+    l / r
   }
+
+  private  def divideIntegral[B:Integral](l: B, r: B): B = {
+    l / r
+  }
+
 
 
   implicit class ExtendedList(val ll: Seq[_]) {
-    def +++(rl: Seq[_]): Seq[_] = {
+    def #+(rl: Seq[_]): Seq[_] = {
       rl.flatMap(r => ll.map(
         l => {
-          plus(l, r)
+          r match {
+            case rr:Double => l match {
+              case ll:Double => plus(ll,rr)
+              case ll:Long => plus(ll,rr)
+              case ll:Float => plus(ll,rr)
+              case ll:Int => plus(ll,rr)
+              case ll:Short => plus(ll,rr)
+              case ll:String => plus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Long => l match {
+              case ll:Double => plus(ll,rr)
+              case ll:Long => plus(ll,rr)
+              case ll:Float => plus(ll,rr)
+              case ll:Int => plus(ll,rr)
+              case ll:Short => plus(ll,rr)
+              case ll:String => plus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Float => l match {
+              case ll:Double => plus(ll,rr)
+              case ll:Long => plus(ll,rr)
+              case ll:Float => plus(ll,rr)
+              case ll:Int => plus(ll,rr)
+              case ll:Short => plus(ll,rr)
+              case ll:String => plus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Int => l match {
+              case ll:Double => plus(ll,rr)
+              case ll:Long => plus(ll,rr)
+              case ll:Float => plus(ll,rr)
+              case ll:Int => plus(ll,rr)
+              case ll:Short => plus(ll,rr)
+              case ll:String => plus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Short => l match {
+              case ll:Double => plus(ll,rr)
+              case ll:Long => plus(ll,rr)
+              case ll:Float => plus(ll,rr)
+              case ll:Int => plus(ll,rr)
+              case ll:Short => plus(ll,rr)
+              case ll:String => plus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:String => l match {
+              case ll:Double => plus(ll,rr)
+              case ll:Long => plus(ll,rr)
+              case ll:Float => plus(ll,rr)
+              case ll:Int => plus(ll,rr)
+              case ll:Short => plus(ll,rr)
+              case ll:String => plus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case e => throw new Error("wrong right side type: "+e)
+          }
         }
       ))
     }
 
-    def +++(rl: Double): Seq[_] = {
-      ll +++ List(rl)
+    def #+[N:Numeric](rl: N): Seq[_] = {
+      ll #+ List(rl)
     }
 
-    def +++(rl: Float): Seq[_] = {
-      ll +++ List(rl)
-
-    }
-
-    def +++(rl: Long): Seq[_] = {
-      ll +++ List(rl)
-
-    }
-
-    def +++(_rl: Int): Seq[_] = {
+    def #+(_rl: String): Seq[_] = {
       val rl = List(_rl)
-      ll +++ rl
+      ll #+ rl
     }
 
-    def +++(_rl: String): Seq[_] = {
+    def #-[N:Numeric](_rl: N): Seq[_] = {
       val rl = List(_rl)
-      ll +++ rl
+      ll #- rl
     }
 
-    def ---(_rl: Double): Seq[_] = {
-      val rl = List(_rl)
-      ll --- rl
-    }
-
-    def ---(rl: Seq[_]): Seq[_] = {
+    def #-(rl: Seq[_]): Seq[_] = {
       rl.flatMap(r => ll.map(
-        l => minus(l, r)
+        l => {
+          r match {
+            case rr:Double => l match {
+              case ll:Double => minus(ll,rr)
+              case ll:Long => minus(ll,rr)
+              case ll:Float => minus(ll,rr)
+              case ll:Int => minus(ll,rr)
+              case ll:Short => minus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Long => l match {
+              case ll:Double => minus(ll,rr)
+              case ll:Long => minus(ll,rr)
+              case ll:Float => minus(ll,rr)
+              case ll:Int => minus(ll,rr)
+              case ll:Short => minus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Float => l match {
+              case ll:Double => minus(ll,rr)
+              case ll:Long => minus(ll,rr)
+              case ll:Float => minus(ll,rr)
+              case ll:Int => minus(ll,rr)
+              case ll:Short => minus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Int => l match {
+              case ll:Double => minus(ll,rr)
+              case ll:Long => minus(ll,rr)
+              case ll:Float => minus(ll,rr)
+              case ll:Int => minus(ll,rr)
+              case ll:Short => minus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Short => l match {
+              case ll:Double => minus(ll,rr)
+              case ll:Long => minus(ll,rr)
+              case ll:Float => minus(ll,rr)
+              case ll:Int => minus(ll,rr)
+              case ll:Short => minus(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case e => throw new Error("wrong right side type: "+e)
+          }
+        }
       ))
     }
 
-    def ---(_rl: Float): Seq[_] = {
+
+    def #*[N:Numeric](_rl: N): Seq[_] = {
       val rl = List(_rl)
-      ll --- rl
+      ll #* rl
     }
 
-    def ---(_rl: Long): Seq[_] = {
-      val rl = List(_rl)
-      ll --- rl
-    }
 
-    def ---(_rl: Int): Seq[_] = {
-      val rl = List(_rl)
-      ll --- rl
-    }
-
-    def ***(_rl: Double): Seq[_] = {
-      val rl = List(_rl)
-      ll *** rl
-    }
-
-    def ***(_rl: Float): Seq[_] = {
-      val rl = List(_rl)
-      ll *** rl
-    }
-
-    def ***(rl: Seq[_]): Seq[_] = {
+    def #*(rl: Seq[_]): Seq[_] = {
       rl.flatMap(r => ll.map(
-        l => multiply(l, r)
+        l => {
+          r match {
+            case rr:Double => l match {
+              case ll:Double => multiply(ll,rr)
+              case ll:Long => multiply(ll,rr)
+              case ll:Float => multiply(ll,rr)
+              case ll:Int => multiply(ll,rr)
+              case ll:Short => multiply(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Long => l match {
+              case ll:Double => multiply(ll,rr)
+              case ll:Long => multiply(ll,rr)
+              case ll:Float => multiply(ll,rr)
+              case ll:Int => multiply(ll,rr)
+              case ll:Short => multiply(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Float => l match {
+              case ll:Double => multiply(ll,rr)
+              case ll:Long => multiply(ll,rr)
+              case ll:Float => multiply(ll,rr)
+              case ll:Int => multiply(ll,rr)
+              case ll:Short => multiply(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Int => l match {
+              case ll:Double => multiply(ll,rr)
+              case ll:Long => multiply(ll,rr)
+              case ll:Float => multiply(ll,rr)
+              case ll:Int => multiply(ll,rr)
+              case ll:Short => multiply(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Short => l match {
+              case ll:Double => multiply(ll,rr)
+              case ll:Long => divideIntegral(ll,rr)
+              case ll:Float => multiply(ll,rr)
+              case ll:Int => multiply(ll,rr)
+              case ll:Short => multiply(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case e => throw new Error("wrong right side type: "+e)
+          }
+        }
       ))
     }
 
-    def ***(_rl: Long): Seq[_] = {
-      val rl = List(_rl)
-      ll *** rl
-    }
 
-    def ***(_rl: Int): Seq[_] = {
-      val rl = List(_rl)
-      ll *** rl
-    }
 
-    def |||(rl: Seq[_]): Seq[_] = {
+    def #/(rl: Seq[_]): Seq[_] = {
       rl.flatMap(r => ll.map(
-        l => divide(l, r)
+        l =>{
+          r match {
+            case rr:Double => l match {
+              case ll:Double => divide(ll,rr)
+              case ll:Long => divide(ll,rr)
+              case ll:Float => divide(ll,rr)
+              case ll:Int => divide(ll,rr)
+              case ll:Short => divide(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Long => l match {
+              case ll:Double => divide(ll,rr)
+              case ll:Long => divideIntegral(ll,rr)
+              case ll:Float => divide(ll,rr)
+              case ll:Int => divideIntegral(ll,rr)
+              case ll:Short => divideIntegral(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Float => l match {
+              case ll:Double => divide(ll,rr)
+              case ll:Long => divide(ll,rr)
+              case ll:Float => divide(ll,rr)
+              case ll:Int => divide(ll,rr)
+              case ll:Short => divide(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Int => l match {
+              case ll:Double => divide(ll,rr)
+              case ll:Long => divideIntegral(ll,rr)
+              case ll:Float => divide(ll,rr)
+              case ll:Int => divideIntegral(ll,rr)
+              case ll:Short => divideIntegral(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case rr:Short => l match {
+              case ll:Double => divide(ll,rr)
+              case ll:Long => divideIntegral(ll,rr)
+              case ll:Float => divide(ll,rr)
+              case ll:Int => divideIntegral(ll,rr)
+              case ll:Short => divideIntegral(ll,rr)
+              case e => throw new Error("wrong left side type: "+e)
+            }
+            case e => throw new Error("wrong right side type: "+e)
+          }
+        }
       ))
     }
-
-    def |||(_rl: Double): Seq[_] = {
+    def #/[N:Numeric](_rl: N): Seq[_] = {
       val rl = List(_rl)
-      ll ||| rl
+      ll #/ rl
     }
-
-    def |||(_rl: Float): Seq[_] = {
-      val rl = List(_rl)
-      ll ||| rl
-    }
-
-    def |||(_rl: Long): Seq[_] = {
-      val rl = List(_rl)
-      ll ||| rl
-    }
-
-    def |||(_rl: Int): Seq[_] = {
-      val rl = List(_rl)
-      ll ||| rl
-    }
-
-
-
-    def ###(_rl: Double): String = {
+    def ##[N:Numeric](_rl: N): String = {
       ll.mkString("")+_rl
     }
 
-    def ###(_rl: Float): String = {
-      ll.mkString("")+_rl
-
-    }
-
-    def ###(_rl: Long): String = {
-      ll.mkString("")+_rl
-
-    }
-
-    def ###(_rl: Int): String = {
-      ll.mkString("")+_rl
-    }
-
-    def @@@(rla: String): String = {
+    def #@(rla: String): String = {
         ll.mkString(rla)
     }
-
-
   }
 
 
-  trait ExtendedAny {
-    val ll: Any
-
-    def +++(rla: Seq[_]): Seq[_] = {
-      List(ll) +++ rla
+  implicit class ExtendedNumeric[N:Numeric](val ll: N) {
+    def #+(rla: Seq[_]): Seq[_] = {
+      List(ll) #+ rla
+    }
+    def #+(rla: N): Seq[_] = {
+      List(ll) #+ List(rla)
+    }
+    def #-(rla: Seq[N]): Seq[_] = {
+      List(ll) #- rla
+    }
+    def #-(rla: N): Seq[_] = {
+      List(ll) #- List(rla)
+    }
+    def #*(rla: Seq[_]): Seq[_] = {
+      List(ll) #/ rla
+    }
+    def #*(rla: N): Seq[_] = {
+      List(ll) #* List(rla)
     }
 
-    def +++(rla: Any): Seq[_] = {
-      List(ll) +++ List(rla)
+    def #/(rla: Seq[_]): Seq[_] = {
+      List(ll) #/ rla
     }
 
-    def ---(rla: Seq[Any]): Seq[_] = {
-      List(ll) --- rla
+    def #/(rla: N): Seq[_] = {
+      List(ll) #/ List(rla)
     }
 
-    def ---(rla: Any): Seq[_] = {
-      List(ll) +++ List(rla)
-    }
-
-    def ***(rla: Seq[_]): Seq[_] = {
-      List(ll) ||| rla
-
-    }
-
-    def ***(rla: Any): Seq[_] = {
-      List(ll) *** List(rla)
-    }
-
-    def |||(rla: Seq[_]): Seq[_] = {
-      List(ll) ||| rla
-    }
-
-    def |||(rla: Any): Seq[_] = {
-      List(ll) ||| List(rla)
-    }
-
-    def ###(rla: Seq[_]): Any = {
+    def ##(rla: Seq[_]): String = {
       plus(ll, rla.mkString(""))
     }
 
-    def ###(rla: Any): Any = {
-      plus(ll, rla)
+    def ##(rla: N): String = {
+      plus(ll.toString, rla.toString)
     }
 
   }
 
-  implicit class ExtendedDouble(val ll: Double) extends ExtendedAny
-
-  implicit class ExtendedLong(val ll: Long) extends  ExtendedAny
-
-  implicit class ExtendedFloat(val ll: Float) extends  ExtendedAny
-
-  implicit class ExtendedInt(val ll: Int) extends  ExtendedAny
 
   implicit class ExtendedString(val ll: String) {
-    def +++(rla: Seq[_]): Seq[_] = {
-      List(ll) +++ rla
+    def #+(rla: Seq[_]): Seq[_] = {
+      List(ll) #+ rla
     }
 
-    def +++(rla: Any): Seq[_] = {
-      List(ll) +++ List(rla)
+    def #+[N:Numeric](rla: N): Seq[_] = {
+      List(ll) #+ List(rla)
+    }
+    def #+(rla: String): Seq[_] = {
+      List(ll) #+ List(rla)
     }
 
-    def ###(rla: Seq[_]): String = {
-      plus(ll, rla.mkString("")).toString
+    def ##(rla: Seq[_]): String = {
+      plus(ll.toString, rla.mkString("")).toString
     }
 
-    def ###(rla: Any): String = {
+    def ##[N:Numeric](rla: N): String = {
       plus(ll, rla.toString).toString
     }
 
