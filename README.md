@@ -3,7 +3,7 @@ Enhanced operators for list of strings and numerics
 
 ### sbt import
 ```
-libraryDependencies += "com.mikafecito" % "cortado_2.12" % "1.0AB"
+libraryDependencies += "com.mikafecito" % "cortado_2.12" % "2.0AB"
 ```
 
 ### Suported Operators
@@ -35,7 +35,7 @@ Evaluates to
 
 ```numbers: List[Int] = List(333, 23, 125)```
 
-Now we multiply this list by 1, 3 and 5 on this list and we expect all possible results
+Now we multiply this list by 1, 3 and 5 on this list and we expect all possible results (a cartesian product is performed and a flattened result is generated)
 
 ```scala
 
@@ -119,3 +119,8 @@ Now, supposed we want to just generate addresses with https and leave out http. 
 ```scala
 "http://" ## "://" ## List("www","dev") ##"." ## List("google", "fb") ##"." ## List("com", "net") ## "/id/" ## numbers) #> "\n"
 ````
+
+### Differences Between V2.0AB and V1.0AB
+The one thing that is kept is the overall goal of the library which is to perform operations on list of numerics and strings.
+The operators have been changed to make them look closer to their equivalent operators.
+ 
